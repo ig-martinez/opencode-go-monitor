@@ -11,7 +11,7 @@ function createMockCredentialsStorage(
   return {
     getCredentials: vi.fn(async () =>
       hasCreds
-        ? { authCookie: 'session=abc123', workspaceId: 'wrk_01KKKYPCYDAY6DQDY1VK1AJ2QT' }
+        ? { authCookie: 'auth=session=abc123', workspaceId: 'wrk_01KKKYPCYDAY6DQDY1VK1AJ2QT' }
         : null,
     ),
     hasCredentials: vi.fn(async () => hasCreds),
@@ -133,7 +133,7 @@ describe('ScrapingFetcher', () => {
         'https://opencode.ai/workspace/wrk_01KKKYPCYDAY6DQDY1VK1AJ2QT/go',
         expect.objectContaining({
           headers: expect.objectContaining({
-            Cookie: 'session=abc123',
+            Cookie: 'auth=session=abc123',
           }),
         }),
       );
