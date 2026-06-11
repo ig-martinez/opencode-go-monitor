@@ -1,41 +1,46 @@
-# OpenCode Go Monitor
+# OpenCode Go Pacer
 
 <p align="center">
-  <img src="opencode-go-monitor/icon.png" alt="OpenCode Go Monitor" width="128" height="128">
+  <img src="opencode-go-monitor-ft-copilot-pacer/icon.png" alt="OpenCode Go Pacer" width="128" height="128">
 </p>
 
 <p align="center">
-  <a href="https://github.com/jorgealonsodev/opencode-go-monitor/releases"><img src="https://img.shields.io/badge/version-0.1.1-blue" alt="Version"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green" alt="License"></a>
+  <a href="https://github.com/jorgealonsodev/opencode-go-monitor-ft-copilot-pacer/releases"><img src="https://img.shields.io/badge/version-0.1.2-blue" alt="Version"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-AGPL--3.0-blue" alt="License"></a>
 </p>
 
-A VSCode extension for real-time OpenCode Go quota monitoring in your status bar.
+**Visual pacing bar for your OpenCode Go quota** — a VS Code extension that combines the real-time OpenCode Go quota monitoring from [opencode-go-monitor](https://github.com/jorgealonsodev/opencode-go-monitor) with the lens-style pacing bar UI from [copilot-pacer](https://github.com/sergiig/copilot-pacer).
+
+Track your daily budget at a glance with an intuitive visual indicator that shows past usage, today's allowance, and future runway all in one compact status bar element.
 
 ## Overview
 
-**OpenCode Go Monitor** is a VS Code: extension that brings real-time quota visibility directly to your editor. Track your OpenCode Go usage without leaving your development environment, with intelligent dual-backend fetching, historical trend prediction, and full bilingual support (English/Spanish).
+**OpenCode Go Pacer** merges two complementary extensions into one unified tool:
+
+- **From opencode-go-monitor**: Reliable dual-backend quota fetching (API + scraping fallback), historical tracking, linear regression exhaustion prediction, and secure credential storage
+- **From copilot-pacer**: The lens-style visual pacing bar (`▰▰┃▮▮▯▯▯┃▱▱▱▱`) that splits your quota timeline into Past, Today's Lens, and Future zones — making it instantly clear whether you're on track, ahead, or falling behind
 
 ## Features
 
-- **Real-time Status Bar Monitoring**: Current usage percentage and reset countdown
+- **Visual Pacing Bar in Status Bar**: See your quota usage as an intuitive progress bar with a daily budget lens
 - **Dual-Backend Fetching**: API-first with HTML scraping fallback
 - **Historical Tracking**: Local storage with linear regression exhaustion prediction
 - **Bilingual Interface**: Automatic EN/ES detection based on VSCode locale
-- **Rich Hover Tooltips**: Progress bars for Rolling, Weekly, and Monthly windows
+- **Rich Hover Tooltips**: Pacing bars for Rolling, Weekly, and Monthly windows
 - **Smart Interaction**: Single-click refresh, double-click details
 - **Global Credential Persistence**: Secure storage via VSCode SecretStorage (OS Keychain)
 
 ## Screenshots
 
-![OpenCode Go Quota Tooltip](opencode-go-monitor/screenshots/tooltip.png)
+![OpenCode Go Pacer Tooltip](https://raw.githubusercontent.com/ig-martinez/opencode-go-monitor/master/opencode-go-monitor-ft-copilot-pacer/screenshots/tooltip.png)
 
-*Hover over the status bar item to see detailed progress bars for all three quota windows.*
+*Hover over the status bar item to see pacing bars for all three quota windows.*
 
 ## Installation
 
 ### From VSIX
 
-1. Download the latest `.vsix` from [Releases](https://github.com/jorgealonsodev/opencode-go-monitor/releases)
+1. Download the latest `.vsix` from [Releases](https://github.com/jorgealonsodev/opencode-go-monitor-ft-copilot-pacer/releases)
 2. Open VSCode
 3. Go to Extensions view (`Ctrl+Shift+X` / `Cmd+Shift+X`)
 4. Click `...` → **Install from VSIX...**
@@ -45,8 +50,8 @@ A VSCode extension for real-time OpenCode Go quota monitoring in your status bar
 ### From Source
 
 ```bash
-git clone https://github.com/jorgealonsodev/opencode-go-monitor.git
-cd opencode-go-monitor/opencode-go-monitor
+git clone https://github.com/jorgealonsodev/opencode-go-monitor-ft-copilot-pacer.git
+cd opencode-go-monitor-ft-copilot-pacer/opencode-go-monitor-ft-copilot-pacer
 npm install
 npm run build
 npm run package
@@ -55,45 +60,44 @@ npm run package
 ## Quick Start
 
 1. **Configure Credentials**:
-   - `Ctrl+Shift+P` → `OpenCode Go: Configure Credentials`
+   - `Ctrl+Shift+P` → `OpenCode Go Pacer: Configure Credentials`
    - Enter your `workspaceId` (from URL: `/workspace/{id}/go`)
    - Enter your `auth` cookie (from browser DevTools → Application → Cookies → `opencode.ai`)
 
-2. **Monitor**: The status bar will immediately show your current usage.
+2. **Monitor**: The status bar will immediately show your visual pacing bar.
 
 3. **Interact**:
    - **1 click**: Refresh quota immediately
    - **2 clicks**: Open detailed breakdown
-   - **Hover**: See progress bars for all windows
+   - **Hover**: See pacing bars for all windows
 
 ## Configuration
 
 | Setting | Default | Description |
 |---------|---------|-------------|
-| `opencodeGoQuota.pollIntervalSeconds` | `300` | Poll frequency (min: 60s) |
-| `opencodeGoQuota.warningThreshold` | `80` | Warning color threshold (%) |
-| `opencodeGoQuota.errorThreshold` | `95` | Error color threshold (%) |
-| `opencodeGoQuota.fetcherStrategy` | `"auto"` | `auto`, `api`, or `scraping` |
-| `opencodeGoQuota.displayWindow` | `"rolling"` | `rolling`, `weekly`, or `monthly` |
-| `opencodeGoQuota.debug` | `false` | Enable debug logging |
+| `opencodeGoPacer.pollIntervalSeconds` | `300` | Poll frequency (min: 60s) |
+| `opencodeGoPacer.warningThreshold` | `80` | Warning color threshold (%) |
+| `opencodeGoPacer.errorThreshold` | `95` | Error color threshold (%) |
+| `opencodeGoPacer.displayWindow` | `"rolling"` | `rolling`, `weekly`, or `monthly` |
+| `opencodeGoPacer.debug` | `false` | Enable debug logging |
 
 ## Commands
 
 | Command | Description |
 |---------|-------------|
-| `OpenCode Go: Configure Credentials` | Set workspace ID and auth cookie |
-| `OpenCode Go: Refresh Quota` | Force immediate quota fetch |
-| `OpenCode Go: Show Details` | Open detailed breakdown QuickPick |
-| `OpenCode Go: Export History` | Export historical data to JSON |
-| `OpenCode Go: Open Dashboard` | Open OpenCode dashboard in browser |
-| `OpenCode Go: Clear Credentials` | Remove all stored credentials |
-| `OpenCode Go: Select Display Window` | Choose quota window to display |
+| `OpenCode Go Pacer: Configure Credentials` | Set workspace ID and auth cookie |
+| `OpenCode Go Pacer: Refresh Quota` | Force immediate quota fetch |
+| `OpenCode Go Pacer: Show Details` | Open detailed breakdown QuickPick |
+| `OpenCode Go Pacer: Export History` | Export historical data to JSON |
+| `OpenCode Go Pacer: Open Dashboard` | Open OpenCode dashboard in browser |
+| `OpenCode Go Pacer: Clear Credentials` | Remove all stored credentials |
+| `OpenCode Go Pacer: Select Display Window` | Choose quota window to display |
 
 ## Project Structure
 
 ```
-opencode-go-monitor/
-├── opencode-go-monitor/          # VSCode Extension
+opencode-go-monitor-ft-copilot-pacer/
+├── opencode-go-monitor-ft-copilot-pacer/  # VSCode Extension
 │   ├── src/
 │   │   ├── commands/           # VSCode command handlers
 │   │   ├── domain/             # Core types, formatting, prediction
@@ -107,7 +111,9 @@ opencode-go-monitor/
 │   ├── package.nls.json        # English translations
 │   ├── package.nls.es.json     # Spanish translations
 │   └── README.md               # Extension documentation
-├── PRD-opencode-go-monitor-vscode.md  # Product Requirements Document
+├── AGENTS.md                   # AI agent skill registry
+├── plans/                      # Implementation plans
+├── skills/                     # AI agent skills
 └── README.md                   # This file
 ```
 
@@ -125,7 +131,7 @@ This extension prioritizes security:
 
 ```bash
 # Install dependencies
-cd opencode-go-monitor
+cd opencode-go-monitor-ft-copilot-pacer
 npm install
 
 # Compile TypeScript
@@ -156,12 +162,14 @@ Your session cookie has expired. Follow the steps above to get a new one.
 
 ### Debug mode
 
-Enable debug logging by setting `opencodeGoQuota.debug` to `true`. View logs in `View → Output → OpenCode Go Monitor`.
+Enable debug logging by setting `opencodeGoPacer.debug` to `true`. View logs in `View → Output → OpenCode Go Pacer`.
 
 ## License
 
-MIT
+AGPL-3.0. See [LICENSE](opencode-go-monitor-ft-copilot-pacer/LICENSE) for details.
 
-## Author
+This extension is a merge of:
+- [opencode-go-monitor](https://github.com/jorgealonsodev/opencode-go-monitor) (MIT) — original OpenCode Go quota monitor
+- [copilot-pacer](https://github.com/sergiig/copilot-pacer) (MIT) — visual pacing bar for GitHub Copilot
 
-[jorgealonsodev](https://github.com/jorgealonsodev)
+The combined work is released under the **GNU Affero General Public License v3.0**.

@@ -1,4 +1,4 @@
-# Tasks: OpenCode Go Quota VSCode Extension MVP
+# Tasks: OpenCode Go Pacer VSCode Extension
 
 ## Phase 1: Project Scaffolding
 
@@ -6,7 +6,7 @@
   - **Files**: package.json
   - **Dependencies**: None
   - **Acceptance criteria**:
-    - Valid package.json with name "opencode-go-monitor"
+    - Valid package.json with name "opencode-go-monitor-ft-copilot-pacer"
     - activationEvents: "onStartupFinished"
     - Contributes: commands, configuration, statusBarItem
     - Dependencies: undici (Node 18+ built-in), cheerio

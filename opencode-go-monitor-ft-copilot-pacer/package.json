@@ -1,0 +1,126 @@
+{
+  "name": "opencode-go-monitor-ft-copilot-pacer",
+  "displayName": "OpenCode Go Pacer",
+  "description": "Visual pacing bar for OpenCode Go quota — real-time quota monitoring with daily budget lens", 
+  "version": "0.1.2",
+  "publisher": "jorgealonsodev",
+  "icon": "icon.png",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "opencodeGoPacer.configure",
+        "title": "%command.configure.title%",
+        "category": "OpenCode Go Pacer"
+      },
+      {
+        "command": "opencodeGoPacer.refresh",
+        "title": "%command.refresh.title%",
+        "category": "OpenCode Go Pacer"
+      },
+      {
+        "command": "opencodeGoPacer.showDetails",
+        "title": "%command.showDetails.title%",
+        "category": "OpenCode Go Pacer"
+      },
+      {
+        "command": "opencodeGoPacer.exportHistory",
+        "title": "%command.exportHistory.title%",
+        "category": "OpenCode Go Pacer"
+      },
+      {
+        "command": "opencodeGoPacer.openDashboard",
+        "title": "%command.openDashboard.title%",
+        "category": "OpenCode Go Pacer"
+      },
+      {
+        "command": "opencodeGoPacer.clearCredentials",
+        "title": "%command.clearCredentials.title%",
+        "category": "OpenCode Go Pacer"
+      },
+      {
+        "command": "opencodeGoPacer.selectDisplayWindow",
+        "title": "%command.selectDisplayWindow.title%",
+        "category": "OpenCode Go Pacer"
+      }
+    ],
+    "configuration": {
+      "title": "%configuration.title%",
+      "properties": {
+        "opencodeGoPacer.pollIntervalSeconds": {
+          "type": "number",
+          "default": 300,
+          "minimum": 60,
+          "description": "%configuration.pollIntervalSeconds.description%"
+        },
+        "opencodeGoPacer.warningThreshold": {
+          "type": "number",
+          "default": 80,
+          "minimum": 0,
+          "maximum": 100,
+          "description": "%configuration.warningThreshold.description%"
+        },
+        "opencodeGoPacer.errorThreshold": {
+          "type": "number",
+          "default": 95,
+          "minimum": 0,
+          "maximum": 100,
+          "description": "%configuration.errorThreshold.description%"
+        },
+        "opencodeGoPacer.debug": {
+          "type": "boolean",
+          "default": false,
+          "description": "%configuration.debug.description%"
+        },
+        "opencodeGoPacer.displayWindow": {
+          "type": "string",
+          "enum": [
+            "rolling",
+            "weekly",
+            "monthly"
+          ],
+          "default": "rolling",
+          "description": "%configuration.displayWindow.description%"
+        }
+      }
+    },
+    "statusBarItem": [
+      {
+        "id": "opencodeGoPacer",
+        "alignment": "right",
+        "priority": 100
+      }
+    ]
+  },
+  "license": "AGPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jorgealonsodev/opencode-go-monitor-ft-copilot-pacer",
+    "directory": "opencode-go-monitor-ft-copilot-pacer"
+  },
+  "scripts": {
+    "compile": "tsc",
+    "test": "vitest",
+    "package": "vsce package",
+    "build": "node build.mjs --production",
+    "watch": "node build.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "@types/vscode": "^1.85.0",
+    "@vitest/coverage-v8": "^2.1.0",
+    "@vscode/vsce": "^3.2.0",
+    "esbuild": "^0.24.0",
+    "typescript": "^5.3.0",
+    "vitest": "^2.1.0"
+  }
+}

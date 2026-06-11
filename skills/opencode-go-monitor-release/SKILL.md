@@ -1,7 +1,7 @@
 ---
-name: opencode-go-monitor-release
+name: opencode-go-pacer-release
 description: >
-  Release workflow for the opencode-go-monitor VSCode extension.
+  Release workflow for the opencode-go-monitor-ft-copilot-pacer VSCode extension.
   Trigger: When releasing, bumping version, preparing changelog, or cutting a new version of the extension.
 license: Apache-2.0
 metadata:
@@ -11,7 +11,7 @@ metadata:
 
 ## When to Use
 
-- Preparing a new release of the OpenCode Go Monitor VSCode extension
+- Preparing a new release of the OpenCode Go Pacer VSCode extension
 - Bumping the extension version in `package.json`
 - Writing or reviewing release notes for a GitHub release
 - Packaging the `.vsix` asset for distribution
@@ -52,7 +52,7 @@ Continuous Integration runs on:
 
 ### 3. Version Bump Location
 
-Only `opencode-go-monitor/package.json` contains the extension version.
+Only `opencode-go-monitor-ft-copilot-pacer/package.json` contains the extension version.
 
 ```json
 {
@@ -86,9 +86,9 @@ See [assets/RELEASE-NOTES-TEMPLATE.md](assets/RELEASE-NOTES-TEMPLATE.md) for the
 The release workflow packages the extension automatically on tag push, but verify locally:
 
 ```bash
-cd opencode-go-monitor
+cd opencode-go-monitor-ft-copilot-pacer
 npm run build
-npx vsce package --out opencode-go-monitor.vsix
+npx vsce package --out opencode-go-monitor-ft-copilot-pacer.vsix
 ```
 
 The CI workflow (`.github/workflows/release.yml`) attaches the `.vsix` to the GitHub release. Ensure the release notes mention:
@@ -106,7 +106,7 @@ Binaries and SHA-256 checksums are attached below.
 git checkout master
 git pull origin master
 
-# 2. Bump version in opencode-go-monitor/package.json
+# 2. Bump version in opencode-go-monitor-ft-copilot-pacer/package.json
 # 3. Update README.md badge if needed
 # 4. Prepare release notes in assets/RELEASE-NOTES-TEMPLATE.md or draft
 
@@ -125,8 +125,8 @@ git push origin vx.y.z
 
 ```bash
 # 1. Create a new worktree for the feature
-git worktree add ../opencode-go-monitor-feature-name feature-branch-name
-cd ../opencode-go-monitor-feature-name
+git worktree add ../opencode-go-monitor-ft-copilot-pacer-feature-name feature-branch-name
+cd ../opencode-go-monitor-ft-copilot-pacer-feature-name
 
 # 2. Work, commit, push
 git push -u origin feature-branch-name
@@ -134,22 +134,22 @@ git push -u origin feature-branch-name
 # 3. Open PR to master via GitHub
 # 4. After merge, clean up
 cd ..
-git worktree remove opencode-go-monitor-feature-name
+git worktree remove opencode-go-monitor-ft-copilot-pacer-feature-name
 git branch -d feature-branch-name
 ```
 
 ### Verify VSIX locally
 
 ```bash
-cd opencode-go-monitor
+cd opencode-go-monitor-ft-copilot-pacer
 npm ci
 npm run build
-npx vsce package --out opencode-go-monitor.vsix
-ls -la opencode-go-monitor.vsix
+npx vsce package --out opencode-go-monitor-ft-copilot-pacer.vsix
+ls -la opencode-go-monitor-ft-copilot-pacer.vsix
 ```
 
 ## Resources
 
 - **Templates**: See [assets/RELEASE-NOTES-TEMPLATE.md](assets/RELEASE-NOTES-TEMPLATE.md) for the copy-paste release notes template
 - **CI/CD**: See `.github/workflows/release.yml` for the automated packaging workflow
-- **Extension manifest**: `opencode-go-monitor/package.json` — single source of truth for version
+- **Extension manifest**: `opencode-go-monitor-ft-copilot-pacer/package.json` — single source of truth for version

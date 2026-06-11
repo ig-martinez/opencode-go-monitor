@@ -1,0 +1,15 @@
+{
+  "command.configure.title": "OpenCode Go Pacer: Configure Credentials",
+  "command.refresh.title": "OpenCode Go Pacer: Refresh Quota",
+  "command.showDetails.title": "OpenCode Go Pacer: Show Details",
+  "command.exportHistory.title": "OpenCode Go Pacer: Export History",
+  "command.openDashboard.title": "OpenCode Go Pacer: Open Dashboard",
+  "command.clearCredentials.title": "OpenCode Go Pacer: Clear Credentials",
+  "command.selectDisplayWindow.title": "OpenCode Go Pacer: Select Display Window",
+  "configuration.title": "OpenCode Go Pacer",
+  "configuration.pollIntervalSeconds.description": "How often to poll for quota updates (seconds)",
+  "configuration.warningThreshold.description": "Usage percentage to trigger warning color (yellow)",
+  "configuration.errorThreshold.description": "Usage percentage to trigger error color (red)",
+  "configuration.debug.description": "Enable debug logging",
+  "configuration.displayWindow.description": "Which quota window to display in the status bar"
+}

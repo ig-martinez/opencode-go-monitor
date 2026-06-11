@@ -10,7 +10,7 @@ permissions:
 
 defaults:
   run:
-    working-directory: opencode-go-monitor
+    working-directory: opencode-go-monitor-ft-copilot-pacer
 
 jobs:
   release:
@@ -28,11 +28,11 @@ jobs:
         run: npm run build
 
       - name: Package .vsix
-        run: npx vsce package --no-dependencies --out opencode-go-monitor.vsix
+        run: npx vsce package --no-dependencies --out opencode-go-monitor-ft-copilot-pacer.vsix
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          files: opencode-go-monitor/opencode-go-monitor.vsix
+          files: opencode-go-monitor-ft-copilot-pacer/opencode-go-monitor-ft-copilot-pacer.vsix
           generate_release_notes: true
           fail_on_unmatched_files: true

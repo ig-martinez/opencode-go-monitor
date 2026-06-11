@@ -11,6 +11,7 @@ htmlcov/
 # IDE
 .vscode/
 .idea/
+.history/
 
 # OS
 .DS_Store
@@ -33,3 +34,6 @@ temp/
 # Python caches
 __pycache__/
 .pytest_cache/
+
+# AI
+plans/
